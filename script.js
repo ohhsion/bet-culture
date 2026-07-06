@@ -1,53 +1,50 @@
 const data = {
+  feed: [
+    { type: "🔥 Мем", text: "Последний депозит — это всегда не последний" },
+    { type: "📰 Новость", text: "Индустрия усиливает контроль бонусов" },
+    { type: "🧠 Разбор", text: "RTP работает на миллионы спинов, не на один" }
+  ],
+
   memes: [
-    "Когда сказал: последний депозит — и уже 5 часов играешь",
-    "Казино: вот бонус 🎁 / Ты: слил всё за 2 минуты",
-    "“Я контролирую игру” — классика каждого игрока"
+    { text: "Я: сегодня не играю / тоже я через 10 минут" },
+    { text: "Когда почти выиграл — значит почти проиграл" },
+    { text: "Казино всегда побеждает... кроме тех раз, когда нет (редко)" }
   ],
 
   news: [
-    "Индустрия усиливает контроль бонусных систем в 2026 году",
-    "Новые правила отыгрыша становятся строже"
+    { text: "Новые ограничения на бонусные программы в 2026" },
+    { text: "Рост контроля над онлайн-платформами в Европе" }
   ],
 
   breakdown: [
-    "RTP — это статистика на миллионы спинов, а не удача",
-    "Почему “почти выиграл” заставляет играть дальше"
+    { text: "RTP — математическое ожидание, а не удача" },
+    { text: "Эффект почти-выигрыша усиливает вовлечение" }
   ]
 };
 
-function showPage(page) {
-  const pages = document.querySelectorAll(".page");
-
-  pages.forEach(p => p.style.display = "none");
-
-  const active = document.getElementById(page);
-  active.style.display = "block";
-
-  render(page);
-}
-
-function render(page) {
-  const el = document.getElementById(page);
+function render(tab) {
+  const el = document.getElementById(tab);
   el.innerHTML = "";
 
-  if (page === "home") {
-    el.innerHTML = `
-      <div class="card">
-        <h2>🔥 Добро пожаловать в RNG Society</h2>
-        <p>Медиа о мемах, индустрии и культуре азартных игр</p>
-      </div>
-    `;
-    return;
-  }
-
-  data[page].forEach(text => {
+  data[tab].forEach(item => {
     const card = document.createElement("div");
     card.className = "card";
-    card.innerHTML = `<p>${text}</p>`;
+
+    card.innerHTML = `
+      <strong>${item.type ? item.type : ""}</strong>
+      <p>${item.text}</p>
+    `;
+
     el.appendChild(card);
   });
 }
 
-// стартовая страница
-showPage("home");
+function setTab(tab) {
+  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+  document.getElementById(tab).classList.add("active");
+
+  render(tab);
+}
+
+/* старт */
+setTab("feed");
