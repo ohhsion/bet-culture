@@ -1,40 +1,35 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>RNG Society</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css"/>
 </head>
 
 <body>
 
 <header>
   <h1>🎲 RNG Society</h1>
-  <p>Медиа о культуре азартных игр, мемах и индустрии</p>
+  <p>Медиа о мемах, индустрии и культуре азартных игр</p>
 </header>
 
 <nav>
-  <button onclick="showPage('home')">🏠 Лента</button>
-  <button onclick="showPage('memes')">😂 Мемы</button>
-  <button onclick="showPage('news')">📰 Новости</button>
-  <button onclick="showPage('breakdown')">🧠 Разборы</button>
+  <button onclick="setTab('feed')">🧭 Лента</button>
+  <button onclick="setTab('memes')">😂 Мемы</button>
+  <button onclick="setTab('news')">📰 Новости</button>
+  <button onclick="setTab('breakdown')">🧠 Разборы</button>
 </nav>
 
 <main>
 
-  <div id="home" class="page"></div>
-  <div id="memes" class="page"></div>
-  <div id="news" class="page"></div>
-  <div id="breakdown" class="page"></div>
+  <section id="feed" class="tab active"></section>
+  <section id="memes" class="tab"></section>
+  <section id="news" class="tab"></section>
+  <section id="breakdown" class="tab"></section>
 
 </main>
 
-<footer>
-  <p>© 2026 RNG Society</p>
-</footer>
-
 <script src="script.js"></script>
-
 </body>
 </html>
