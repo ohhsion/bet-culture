@@ -91,4 +91,24 @@ button {
 
 button:hover {
   transform: scale(1.05);
+  nav button {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 5px;
+  transition: 0.2s;
+}
+
+nav button:hover {
+  background: rgba(255,255,255,0.1);
+  transform: scale(1.05);
+}
+
+.page {
+  max-width: 900px;
+  margin: auto;
+}
 }
