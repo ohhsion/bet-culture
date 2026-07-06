@@ -1,27 +1,42 @@
-const posts = [
-  { type: "🔥 Мем дня", text: "Когда сказал: последний депозит — и уже 5 часов играешь" },
-  { type: "📰 Новость", text: "Индустрия усиливает контроль бонусных систем" },
-  { type: "🧠 Разбор", text: "RTP — это статистика на миллионы спинов, а не удача одного" },
-  { type: "💬 История", text: "Игрок рассказал, как проиграл всё и вернулся через день" },
-  { type: "⚡ Факт", text: "99% игроков недооценивают эффект “почти выиграл”" }
-];
+const data = {
+  memes: [
+    "Когда сказал: последний депозит — и уже 3 часа играешь",
+    "Казино: вот бонус 🎁 / Я: проигрываю всё за 2 минуты"
+  ],
+  news: [
+    "Индустрия усиливает контроль бонусных систем",
+    "Новые ограничения на отыгрыш в 2026 году"
+  ],
+  breakdown: [
+    "RTP — это долгосрочная математика, а не удача",
+    "Почему “почти выиграл” — это когнитивная ловушка"
+  ]
+};
 
-const feed = document.getElementById("feed");
-const btn = document.getElementById("addPostBtn");
+function renderPage(page) {
+  const el = document.getElementById(page);
+  el.innerHTML = "";
 
-function renderPost(post) {
-  const card = document.createElement("div");
-  card.className = "card";
-  card.innerHTML = `<h2>${post.type}</h2><p>${post.text}</p>`;
-  feed.prepend(card);
+  if (page === "home") {
+    el.innerHTML = "<h2>🔥 Добро пожаловать в RNG Society</h2><p>Лента обновляется вручную через контент</p>";
+    return;
+  }
+
+  data[page].forEach(text => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `<p>${text}</p>`;
+    el.appendChild(card);
+  });
 }
 
-function randomPost() {
-  const index = Math.floor(Math.random() * posts.length);
-  renderPost(posts[index]);
+function showPage(page) {
+  document.querySelectorAll(".page").forEach(p => p.style.display = "none");
+  document.getElementById(page).style.display = "block";
 }
 
-btn.addEventListener("click", randomPost);
-
-// стартовая загрузка
-posts.forEach(renderPost);
+// старт
+renderPage("memes");
+renderPage("news");
+renderPage("breakdown");
+showPage("home");
